@@ -17,5 +17,6 @@ namespace dhiraj.Models
         public int ID { get; set; }
         public string name { get; set; }
         public string address { get; set; }
+        public Nullable<long> contact { get; set; }
     }
 }

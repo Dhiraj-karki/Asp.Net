@@ -4,9 +4,10 @@
     <EntitySetMapping Name="Stds">
       <EntityTypeMapping TypeName="StudentModel.Std">
         <MappingFragment StoreEntitySet="Std">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="contact" ColumnName="contact" />
           <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

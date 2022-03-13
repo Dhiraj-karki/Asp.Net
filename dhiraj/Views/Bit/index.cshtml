@@ -1,16 +1,17 @@
-﻿@model List< dhiraj.Models.Std>
+﻿@model List<dhiraj.Models.Std>
 @{
     ViewBag.Title = "index";
     int sn = 0;
 }
-
+<a href="@Url.Action("dhiraj")">Add new record</a>
 <h2>index</h2>
 <table class="table" border="1">
     <tr>
         <th>ID</th>
         <th>Name</th>
         <th>Address</th>
-        
+        <th>contact</th>
+
     </tr>
     @foreach (var data in Model)
     {
@@ -18,11 +19,7 @@
             <td>@(++sn)</td>
             <td>@(data.name)</td>
             <td>@(data.address)</td>
+            <td>@(data.contact)</td>
         </tr>
     }
 </table>
-
-
-
-
-
