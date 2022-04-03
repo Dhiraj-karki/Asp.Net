@@ -1,0 +1,24 @@
+﻿@model dhiraj.Models.doctor
+@{
+    ViewBag.Title = "edit1";
+}
+
+@using (Html.BeginForm("UpdateData", "bit1"))
+{
+    <input type="hidden" name="d_id" value="@Model.d_id" />
+    <label>Name</label>
+    <div class="col-md-u">
+        <input type="text" name="d_name" class="form-control" />
+    </div>
+    
+    <label>contact</label>
+    <div class="col-md-u">
+        <input type="text" name="contact" class="form-control" />
+    </div>
+    <div class="col-md-">
+        <input type="submit" class="btn btn-success" value="save" />
+    </div>
+}
+
+<h2>Edit1</h2>
+

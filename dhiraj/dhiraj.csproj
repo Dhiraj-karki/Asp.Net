@@ -128,11 +128,15 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\bit1Controller.cs" />
     <Compile Include="Controllers\BitController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\doctor.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
@@ -212,6 +216,9 @@
     <Content Include="Views\Bit\dhiraj.cshtml" />
     <Content Include="Views\Edit.cshtml" />
     <Content Include="Views\Bit\edit.cshtml" />
+    <Content Include="Views\bit1\index1.cshtml" />
+    <Content Include="Views\bit1\edit1.cshtml" />
+    <Content Include="Views\bit1\dhiraj1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

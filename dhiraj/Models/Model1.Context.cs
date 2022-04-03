@@ -25,6 +25,7 @@ namespace dhiraj.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<doctor> doctors { get; set; }
         public virtual DbSet<Std> Stds { get; set; }
     }
 }
