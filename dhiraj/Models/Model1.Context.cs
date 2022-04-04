@@ -26,6 +26,8 @@ namespace dhiraj.Models
         }
     
         public virtual DbSet<doctor> doctors { get; set; }
+        public virtual DbSet<employee_salary_details> employee_salary_details { get; set; }
         public virtual DbSet<Std> Stds { get; set; }
+        public virtual DbSet<Table_1> Table_1 { get; set; }
     }
 }

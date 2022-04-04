@@ -10,6 +10,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="employee_salary_details">
+      <EntityTypeMapping TypeName="StudentModel.employee_salary_details">
+        <MappingFragment StoreEntitySet="employee_salary_details">
+          <ScalarProperty Name="paid_date" ColumnName="paid_date" />
+          <ScalarProperty Name="salary_paid" ColumnName="salary_paid" />
+          <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Stds">
       <EntityTypeMapping TypeName="StudentModel.Std">
         <MappingFragment StoreEntitySet="Std">
@@ -17,6 +27,16 @@
           <ScalarProperty Name="address" ColumnName="address" />
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table_1">
+      <EntityTypeMapping TypeName="StudentModel.Table_1">
+        <MappingFragment StoreEntitySet="Table_1">
+          <ScalarProperty Name="contact" ColumnName="contact" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

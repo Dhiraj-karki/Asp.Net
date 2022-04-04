@@ -13,6 +13,15 @@
           <Property Name="d_name" Type="nchar" MaxLength="20" Nullable="false" />
           <Property Name="contact" Type="bigint" Nullable="false" />
         </EntityType>
+        <EntityType Name="employee_salary_details">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="employee_id" Type="int" Nullable="false" />
+          <Property Name="salary_paid" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="paid_date" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="Std">
           <Key>
             <PropertyRef Name="ID" />
@@ -22,9 +31,52 @@
           <Property Name="address" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="contact" Type="bigint" />
         </EntityType>
+        <EntityType Name="Table_1">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="address" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="contact" Type="nchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_employee_salary_details_Table_1">
+          <End Role="Table_1" Type="Self.Table_1" Multiplicity="1" />
+          <End Role="employee_salary_details" Type="Self.employee_salary_details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_1">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="employee_salary_details">
+              <PropertyRef Name="employee_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_1_Table_1">
+          <End Role="Table_1" Type="Self.Table_1" Multiplicity="1" />
+          <End Role="Table_11" Type="Self.Table_1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Table_1">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Table_11">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="StudentModelStoreContainer">
           <EntitySet Name="doctor" EntityType="Self.doctor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="employee_salary_details" EntityType="Self.employee_salary_details" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Std" EntityType="Self.Std" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_1" EntityType="Self.Table_1" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_employee_salary_details_Table_1" Association="Self.FK_employee_salary_details_Table_1">
+            <End Role="Table_1" EntitySet="Table_1" />
+            <End Role="employee_salary_details" EntitySet="employee_salary_details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_1_Table_1" Association="Self.FK_Table_1_Table_1">
+            <End Role="Table_1" EntitySet="Table_1" />
+            <End Role="Table_11" EntitySet="Table_1" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -32,7 +84,17 @@
       <Schema Namespace="StudentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="StudentEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="doctors" EntityType="StudentModel.doctor" />
+          <EntitySet Name="employee_salary_details" EntityType="StudentModel.employee_salary_details" />
           <EntitySet Name="Stds" EntityType="StudentModel.Std" />
+          <EntitySet Name="Table_1" EntityType="StudentModel.Table_1" />
+          <AssociationSet Name="FK_employee_salary_details_Table_1" Association="StudentModel.FK_employee_salary_details_Table_1">
+            <End Role="Table_1" EntitySet="Table_1" />
+            <End Role="employee_salary_details" EntitySet="employee_salary_details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_1_Table_1" Association="StudentModel.FK_Table_1_Table_1">
+            <End Role="Table_1" EntitySet="Table_1" />
+            <End Role="Table_11" EntitySet="Table_1" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="doctor">
           <Key>
@@ -41,6 +103,16 @@
           <Property Name="d_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="d_name" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="true" />
           <Property Name="contact" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="employee_salary_details">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="employee_id" Type="Int32" Nullable="false" />
+          <Property Name="salary_paid" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="paid_date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Table_1" Relationship="StudentModel.FK_employee_salary_details_Table_1" FromRole="employee_salary_details" ToRole="Table_1" />
         </EntityType>
         <EntityType Name="Std">
           <Key>
@@ -51,7 +123,43 @@
           <Property Name="address" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="contact" Type="Int64" />
         </EntityType>
-      </Schema>
+        <EntityType Name="Table_1">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="contact" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="employee_salary_details" Relationship="StudentModel.FK_employee_salary_details_Table_1" FromRole="Table_1" ToRole="employee_salary_details" />
+          <NavigationProperty Name="Table_11" Relationship="StudentModel.FK_Table_1_Table_1" FromRole="Table_1" ToRole="Table_11" />
+          <NavigationProperty Name="Table_12" Relationship="StudentModel.FK_Table_1_Table_1" FromRole="Table_11" ToRole="Table_1" />
+        </EntityType>
+        <Association Name="FK_employee_salary_details_Table_1">
+          <End Type="StudentModel.Table_1" Role="Table_1" Multiplicity="1" />
+          <End Type="StudentModel.employee_salary_details" Role="employee_salary_details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_1">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="employee_salary_details">
+              <PropertyRef Name="employee_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_1_Table_1">
+          <End Type="StudentModel.Table_1" Role="Table_1" Multiplicity="1" />
+          <End Type="StudentModel.Table_1" Role="Table_11" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Table_1">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Table_11">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -66,6 +174,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="employee_salary_details">
+            <EntityTypeMapping TypeName="StudentModel.employee_salary_details">
+              <MappingFragment StoreEntitySet="employee_salary_details">
+                <ScalarProperty Name="paid_date" ColumnName="paid_date" />
+                <ScalarProperty Name="salary_paid" ColumnName="salary_paid" />
+                <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Stds">
             <EntityTypeMapping TypeName="StudentModel.Std">
               <MappingFragment StoreEntitySet="Std">
@@ -73,6 +191,16 @@
                 <ScalarProperty Name="address" ColumnName="address" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_1">
+            <EntityTypeMapping TypeName="StudentModel.Table_1">
+              <MappingFragment StoreEntitySet="Table_1">
+                <ScalarProperty Name="contact" ColumnName="contact" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

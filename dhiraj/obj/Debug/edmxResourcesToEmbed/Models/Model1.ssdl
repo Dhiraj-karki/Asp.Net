@@ -8,6 +8,15 @@
     <Property Name="d_name" Type="nchar" MaxLength="20" Nullable="false" />
     <Property Name="contact" Type="bigint" Nullable="false" />
   </EntityType>
+  <EntityType Name="employee_salary_details">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="employee_id" Type="int" Nullable="false" />
+    <Property Name="salary_paid" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="paid_date" Type="datetime" Nullable="false" />
+  </EntityType>
   <EntityType Name="Std">
     <Key>
       <PropertyRef Name="ID" />
@@ -17,8 +26,51 @@
     <Property Name="address" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="contact" Type="bigint" />
   </EntityType>
+  <EntityType Name="Table_1">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="address" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="contact" Type="nchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_employee_salary_details_Table_1">
+    <End Role="Table_1" Type="Self.Table_1" Multiplicity="1" />
+    <End Role="employee_salary_details" Type="Self.employee_salary_details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Table_1">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="employee_salary_details">
+        <PropertyRef Name="employee_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Table_1_Table_1">
+    <End Role="Table_1" Type="Self.Table_1" Multiplicity="1" />
+    <End Role="Table_11" Type="Self.Table_1" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Table_1">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Table_11">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="StudentModelStoreContainer">
     <EntitySet Name="doctor" EntityType="Self.doctor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="employee_salary_details" EntityType="Self.employee_salary_details" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Std" EntityType="Self.Std" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Table_1" EntityType="Self.Table_1" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_employee_salary_details_Table_1" Association="Self.FK_employee_salary_details_Table_1">
+      <End Role="Table_1" EntitySet="Table_1" />
+      <End Role="employee_salary_details" EntitySet="employee_salary_details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Table_1_Table_1" Association="Self.FK_Table_1_Table_1">
+      <End Role="Table_1" EntitySet="Table_1" />
+      <End Role="Table_11" EntitySet="Table_1" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

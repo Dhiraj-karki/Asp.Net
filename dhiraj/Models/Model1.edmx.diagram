@@ -5,8 +5,12 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="692667d2a1fe499383e81c3290cbd98f" Name="Diagram1">
-        <EntityTypeShape EntityType="StudentModel.doctor" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="StudentModel.Std" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="StudentModel.doctor" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="StudentModel.employee_salary_details" Width="1.5" PointX="3" PointY="1.125" />
+        <EntityTypeShape EntityType="StudentModel.Std" Width="1.5" PointX="2.75" PointY="4.75" />
+        <EntityTypeShape EntityType="StudentModel.Table_1" Width="1.5" PointX="0.75" PointY="1" />
+        <AssociationConnector Association="StudentModel.FK_employee_salary_details_Table_1" />
+        <AssociationConnector Association="StudentModel.FK_Table_1_Table_1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

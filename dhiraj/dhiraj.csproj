@@ -129,6 +129,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\bit1Controller.cs" />
+    <Compile Include="Controllers\bit2Controller.cs" />
+    <Compile Include="Controllers\bit3Controller.cs" />
     <Compile Include="Controllers\BitController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -136,6 +138,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\doctor.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\employee_salary_details.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Model1.Context.cs">
@@ -154,6 +159,9 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Std.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_1.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -219,9 +227,13 @@
     <Content Include="Views\bit1\index1.cshtml" />
     <Content Include="Views\bit1\edit1.cshtml" />
     <Content Include="Views\bit1\dhiraj1.cshtml" />
+    <Content Include="Views\bit2\Index2.cshtml" />
+    <Content Include="Views\bit2\Edit2.cshtml" />
+    <Content Include="Views\bit2\Salary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\bit3\" />
     <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>
