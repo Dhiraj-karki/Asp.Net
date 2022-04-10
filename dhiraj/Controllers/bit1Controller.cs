@@ -14,12 +14,12 @@ namespace dhiraj.Controllers
         StudentEntities db = new StudentEntities();
         public ActionResult index1()
         {
-            List<doctor> all_data = db.doctors.ToList();
+            List<Table_1> all_data = db.Table_1.ToList();
             return View(all_data);
         }
         public ActionResult dhiraj1()
         {
-            List<doctor> all_data = db.doctors.ToList();
+            List<Table_1> all_data = db.Table_1.ToList();
             return View(all_data);
         }
         public ActionResult create()
@@ -29,27 +29,27 @@ namespace dhiraj.Controllers
 
         public ActionResult edit1(int id)
         {
-            doctor doctor = db.doctors.Find(id);//find data using primary key
-            return View(doctor);
+            Table_1 table_1 = db.Table_1.Find(id);//find data using primary key
+            return View(table_1);
         }
-        public ActionResult savedata(doctor doctor)
+        public ActionResult savedata(Table_1 table_1)
         {
-            db.doctors.Add(doctor);
+            db.Table_1.Add(table_1);
             db.SaveChanges();
             return RedirectToAction("Index1");
         }
-        public ActionResult Updatedata(doctor doctor)
+        public ActionResult UpdateData(Table_1 table_1)
         {
-            db.Entry(doctor).State = EntityState.Modified;
+            db.Entry(table_1).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("index1");
         }
-        public ActionResult deletedata(int d_id)
+        /*public ActionResult deletedata(int d_id)
         {
             doctor data = db.doctors.Find(d_id);
             db.doctors.Remove(data);
             db.SaveChanges();
             return RedirectToAction("Index1");
-        }
+        }*/
     }
 }

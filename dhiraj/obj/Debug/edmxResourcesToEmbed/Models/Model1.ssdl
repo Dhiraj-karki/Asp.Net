@@ -12,7 +12,7 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="employee_id" Type="int" Nullable="false" />
     <Property Name="salary_paid" Type="decimal" Precision="18" Scale="2" Nullable="false" />
     <Property Name="paid_date" Type="datetime" Nullable="false" />
@@ -30,7 +30,7 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="address" Type="nchar" MaxLength="50" Nullable="false" />
     <Property Name="contact" Type="nchar" MaxLength="50" Nullable="false" />
@@ -47,18 +47,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Table_1_Table_1">
-    <End Role="Table_1" Type="Self.Table_1" Multiplicity="1" />
-    <End Role="Table_11" Type="Self.Table_1" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="Table_1">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="Table_11">
-        <PropertyRef Name="id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="StudentModelStoreContainer">
     <EntitySet Name="doctor" EntityType="Self.doctor" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="employee_salary_details" EntityType="Self.employee_salary_details" Schema="dbo" store:Type="Tables" />
@@ -67,10 +55,6 @@
     <AssociationSet Name="FK_employee_salary_details_Table_1" Association="Self.FK_employee_salary_details_Table_1">
       <End Role="Table_1" EntitySet="Table_1" />
       <End Role="employee_salary_details" EntitySet="employee_salary_details" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Table_1_Table_1" Association="Self.FK_Table_1_Table_1">
-      <End Role="Table_1" EntitySet="Table_1" />
-      <End Role="Table_11" EntitySet="Table_1" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

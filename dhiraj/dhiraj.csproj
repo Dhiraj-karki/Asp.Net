@@ -130,7 +130,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\bit1Controller.cs" />
     <Compile Include="Controllers\bit2Controller.cs" />
-    <Compile Include="Controllers\bit3Controller.cs" />
     <Compile Include="Controllers\BitController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -233,7 +232,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\bit3\" />
     <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>

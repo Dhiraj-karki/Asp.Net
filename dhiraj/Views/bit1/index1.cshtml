@@ -1,4 +1,4 @@
-﻿@model List<dhiraj.Models.doctor>
+﻿@model List<dhiraj.Models.Table_1>
 @{
     ViewBag.Title = "index1";
     int sn = 0;
@@ -16,18 +16,20 @@
     <tr>
         <th> ID</th>
         <th> Name</th>
-        
+        <th>Address</th>
         <th> contact</th>
+        <th>Edit</th>
 
     </tr>
     @foreach (var data in Model)
     {
         <tr>
             <td>@(++sn) </td>
-            <td>@(data.d_name) </td>
-            <td>@(data.contact) </td>
-            <td><a href="@Url.Action("edit1", new {id=data.d_id})">Edit<</a></td>
-            <td><a href="@Url.Action("deletedata",new {d_id=data.d_id })">Delete</a></td>
+            <td>@(data.name) </td>
+            <td>@(data.address) </td>
+            <td>@(data.contact)</td>
+            <td><a href="@Url.Action("edit1", new {id=data.id})">Edit<</a></td>
+            
         </tr>
     }
 </table>

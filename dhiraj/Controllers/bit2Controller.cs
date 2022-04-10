@@ -20,15 +20,17 @@ namespace dhiraj.Controllers
         public ActionResult Salary()
         {
             List<employee_salary_details> all_data = db.employee_salary_details.ToList();
+            var empList = db.Table_1.ToList();
+            // ViewBag.empsList=empList;
+            ViewBag.employeeList = new SelectList(empList, "id", "name");
             return View(all_data);
         }
-        public ActionResult create()
-        {
-            return View();
-        }
-
+        
         public ActionResult Edit2(int id)
         {
+            var empList = db.Table_1.ToList();
+            // ViewBag.empsList=empList;
+            ViewBag.employeeList = new SelectList(empList, "id", "name");
             employee_salary_details employee_Salary_Details = db.employee_salary_details.Find(id);//find data using primary key
             return View(employee_Salary_Details);
         }
@@ -38,11 +40,12 @@ namespace dhiraj.Controllers
             db.SaveChanges();
             return RedirectToAction("Index2");
         }
-        public ActionResult Updatedata(employee_salary_details employee_Salary_Details)
+        
+        public ActionResult UpdateData(employee_salary_details employee_Salary_Details)
         {
             db.Entry(employee_Salary_Details).State = EntityState.Modified;
             db.SaveChanges();
-            return RedirectToAction("index2");
+            return RedirectToAction("Index2");
         }
         public ActionResult deletedata(int id)
         {

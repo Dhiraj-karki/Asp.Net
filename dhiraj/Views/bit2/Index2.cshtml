@@ -10,11 +10,12 @@
         color: white;
     }
 </style>
-<a href="@Url.Action("salary")"> Add new record</a>
+<a href="@Url.Action("Salary")"> Add new record</a>
 <h2> index</h2>
 <table class="table" border="1">
     <tr>
         <th> ID</th>
+        <th>employee_name</th>
         <th>employee_id</th>
         <th>salary_paid</th>
         <th>paid_data</th>
@@ -24,11 +25,17 @@
     {
         <tr>
             <td>@(++sn) </td>
+            <td>@(data.Table_1.name)</td>
             <td>@(data.employee_id) </td>
+            
             <td>@(data.salary_paid) </td>
             <td>@(data.paid_date)</td>
-            <td><a href="@Url.Action("edit1", new {id=data.employee_id})">Edit<</a></td>
+            <td><a href="@Url.Action("Edit2", new {id=data.id})">Edit<</a></td>
             <td><a href="@Url.Action("deletedata",new {id=data.id })">Delete</a></td>
         </tr>
     }
+    <tr>
+        <td>Total</td>
+        <td colspan="3">@(Model.Sum(x=>x.salary_paid))</td>
+    </tr>
 </table>

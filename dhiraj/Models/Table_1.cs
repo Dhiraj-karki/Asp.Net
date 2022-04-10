@@ -27,7 +27,5 @@ namespace dhiraj.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<employee_salary_details> employee_salary_details { get; set; }
-        public virtual Table_1 Table_11 { get; set; }
-        public virtual Table_1 Table_12 { get; set; }
     }
 }
